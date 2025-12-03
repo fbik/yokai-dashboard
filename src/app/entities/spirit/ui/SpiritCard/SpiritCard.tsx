@@ -2,7 +2,7 @@
 
 import { Spirit } from '../../model/types';
 import { THREAT_LEVELS } from '../../model/constants';
-import styles from './SpiritCard.module.scss';
+import styles from './SpiritCard.module.css';
 
 interface SpiritCardProps {
   spirit: Spirit;
@@ -10,7 +10,7 @@ interface SpiritCardProps {
   isCapturing?: boolean;
 }
 
-export const SpiritCard: React.FC<SpiritCardProps> = ({
+const SpiritCard: React.FC<SpiritCardProps> = ({
   spirit,
   onCapture,
   isCapturing = false,
@@ -22,6 +22,9 @@ export const SpiritCard: React.FC<SpiritCardProps> = ({
       onCapture(spirit.id);
     }
   };
+  
+  const statusClass = spirit.status === 'active' ? styles.active : styles.captured;
+  const statusText = spirit.status === 'active' ? 'Active' : 'Captured';
   
   return (
     <div className={styles.card} data-status={spirit.status}>
@@ -44,8 +47,8 @@ export const SpiritCard: React.FC<SpiritCardProps> = ({
         
         <div className={styles.field}>
           <span className={styles.label}>Status:</span>
-          <span className={\`\${styles.value} \${styles[spirit.status]}\`}>
-            {spirit.status === 'active' ? 'Active' : 'Captured'}
+          <span className={`${styles.value} ${statusClass}`}>
+            {statusText}
           </span>
         </div>
         
@@ -59,7 +62,7 @@ export const SpiritCard: React.FC<SpiritCardProps> = ({
           className={styles.captureButton}
           onClick={handleCapture}
           disabled={isCapturing}
-          aria-label={\`Capture \${spirit.name}\`}
+          aria-label={`Capture ${spirit.name}`}
         >
           {isCapturing ? 'Capturing...' : 'Capture'}
         </button>
@@ -67,3 +70,5 @@ export const SpiritCard: React.FC<SpiritCardProps> = ({
     </div>
   );
 };
+
+export default SpiritCard;
