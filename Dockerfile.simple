@@ -1,0 +1,19 @@
+FROM node:20-alpine
+
+WORKDIR /app
+
+# Копируем файлы зависимостей
+COPY package.json package-lock.json ./
+
+# Устанавливаем зависимости
+RUN npm ci --only=production
+
+# Копируем исходный код
+COPY . .
+
+# Собираем приложение
+RUN npm run build
+
+# Запускаем приложение
+EXPOSE 3000
+CMD ["npm", "start"]

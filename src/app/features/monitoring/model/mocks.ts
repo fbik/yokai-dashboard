@@ -8,7 +8,7 @@ export function generateMockSpirits(count: number = 10): Spirit[] {
   
   for (let i = 0; i < count; i++) {
     spirits.push({
-      id: \`spirit-\${i + 1}\`,
+      id: `spirit-${i + 1}`,
       name: SPIRIT_NAMES[Math.floor(Math.random() * SPIRIT_NAMES.length)],
       threatLevel: threatLevels[Math.floor(Math.random() * threatLevels.length)],
       location: TOKYO_LOCATIONS[Math.floor(Math.random() * TOKYO_LOCATIONS.length)],

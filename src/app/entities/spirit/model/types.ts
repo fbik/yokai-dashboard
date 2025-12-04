@@ -24,3 +24,10 @@ export interface CaptureSpiritResponse {
   message: string;
   spirit: Spirit;
 }
+
+interface SSEEvent {
+  type: 'heartbeat' | 'threat_update';
+  data?: any;
+  timestamp?: number;
+}
+

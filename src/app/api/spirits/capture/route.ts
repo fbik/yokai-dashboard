@@ -7,9 +7,22 @@ export async function POST(request: NextRequest) {
     
     await new Promise(resolve => setTimeout(resolve, 500));
     
+    // 30% вероятность ошибки (как в ТЗ)
+    const shouldFail = Math.random() < 0.3;
+    
+    if (shouldFail) {
+      return NextResponse.json(
+        { 
+          success: false, 
+          error: 'Failed to capture spirit. Spirit escaped!' 
+        },
+        { status: 500 }
+      );
+    }
+    
     return NextResponse.json({
       success: true,
-      message: \`Spirit captured successfully\`,
+      message: `Spirit captured successfully`,
       spirit: {
         id: spiritId,
         status: 'captured',
@@ -19,7 +32,10 @@ export async function POST(request: NextRequest) {
     
   } catch (error) {
     return NextResponse.json(
-      { error: 'Failed to capture spirit' },
+      { 
+        success: false,
+        error: 'Failed to capture spirit' 
+      },
       { status: 500 }
     );
   }
