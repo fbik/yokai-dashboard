@@ -113,3 +113,81 @@ docker-compose up prod
 ## 📄 License
 
 MIT
+
+## 🐳 Docker Status (Verified Working)
+
+✅ **Docker development environment is fully operational:**
+
+\`\`\`bash
+# Start Docker development container
+docker-compose up yokai-dev
+
+# Or in background
+docker-compose up -d yokai-dev
+
+# Manage container
+./docker-manage.sh start    # Start
+./docker-manage.sh stop     # Stop  
+./docker-manage.sh logs     # View logs
+./docker-manage.sh status   # Check status
+\`\`\`
+
+**Verified endpoints in Docker:**
+- ✅ \`GET /api/health\` - System health check
+- ✅ \`GET /api/spirits\` - List of spirits (10 sample spirits)
+- ✅ \`GET /\` - Home page
+- ✅ \`GET /monitoring\` - Monitoring interface with FSD widgets
+
+**Docker configuration fixed:**
+- Replaced \`npm ci\` with \`npm install\` in \`Dockerfile.dev\`
+- All FSD layers work correctly in container
+- Hot reload enabled for development
+
+## 🏗️ Current Project Status
+
+### ✅ **Phase 1: FSD Architecture - COMPLETE**
+- Full Feature Sliced Design implementation
+- All layers: entities, features, widgets, shared
+- TypeScript configuration with path aliases
+- SCSS Modules integrated
+- React Query provider setup
+
+### ✅ **Docker Deployment - COMPLETE**  
+- Development container working on port 3000
+- Production build configuration ready
+- Container management scripts created
+
+### 🔄 **Phase 2: Zod Validation - READY TO START**
+- Install Zod: \`npm install zod\`
+- Create validation schemas for entities
+- Add type-safe API requests/responses
+
+## 🚀 Quick Start Commands
+
+\`\`\`bash
+# Local development
+npm run dev            # Start Next.js dev server
+npm run build         # Build for production
+npm start            # Run production build
+
+# Docker development  
+docker-compose up yokai-dev    # Start dev container
+./docker-manage.sh status      # Check container status
+
+# Validation and checks
+npx tsc --noEmit      # TypeScript type checking
+./check-fsd-rules.sh  # Validate FSD architecture
+\`\`\`
+
+## 📊 Version History
+
+- **v0.1.0** - Initial project setup with basic features
+- **v0.2.0** - Full FSD architecture implementation
+- **v0.2.1** - Docker build fixes and stable deployment
+
+## 🔗 Useful Links
+
+- **Local:** http://localhost:3000
+- **Docker:** http://localhost:3000 (when container running)
+- **GitHub:** https://github.com/fbik/yokai-dashboard
+- **API Docs:** See API endpoints section
