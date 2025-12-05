@@ -1,14 +1,14 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
-import ReactQueryProvider from '@/providers/ReactQueryProvider';
+import ReactQueryProvider from '@/shared/lib/providers/ReactQueryProvider';
 import { Toaster } from 'react-hot-toast';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Yokai Dashboard',
-  description: 'Система мониторинга духов и аномалий',
+  title: 'Yokai Dashboard | Система мониторинга ёкаев',
+  description: 'Реальное время • Токио и окрестности',
 };
 
 export default function RootLayout({
@@ -26,8 +26,9 @@ export default function RootLayout({
             toastOptions={{
               duration: 4000,
               style: {
-                background: '#363636',
+                background: '#1e293b',
                 color: '#fff',
+                border: '1px solid #334155',
               },
             }}
           />
