@@ -1,36 +1,115 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🎭 Yokai Dashboard
 
-## Getting Started
+Spirit and anomaly monitoring system built with Next.js and Feature Sliced Design (FSD).
 
-First, run the development server:
+## 🏗️ Architecture: Feature Sliced Design (FSD)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+The project follows strict Feature Sliced Design principles:
+
+```
+src/
+├── app/                    # Next.js App Router
+│   ├── api/               # API routes
+│   ├── layout.tsx         # Root layout
+│   └── page.tsx           # Home page
+├── entities/              # Business entities
+│   └── spirit/           # Spirit entity
+│       ├── model/        # Types, schemas
+│       ├── api/          # API calls, React Query hooks
+│       └── ui/           # UI components
+├── features/              # User stories
+│   └── monitoring/       # Monitoring feature
+│       ├── model/        # Feature-specific types
+│       ├── lib/          # Business logic
+│       ├── api/          # Feature API
+│       └── ui/           # Feature UI
+├── widgets/               # Reusable UI blocks
+│   ├── spirit-list/      # Spirit list widget
+│   ├── tokyo-map/        # Tokyo map widget
+│   └── control-panel/    # Control panel widget
+└── shared/               # Shared resources
+    ├── ui/               # UI components (Button, Card, etc.)
+    ├── lib/              # Utilities, providers
+    └── api/              # API configuration
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Quick Start
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+# Install dependencies
+npm install
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+# Run in development mode
+npm run dev
 
-## Learn More
+# Build for production
+npm run build
 
-To learn more about Next.js, take a look at the following resources:
+# Run production version
+npm start
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🐳 Docker Support
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+# Development with hot reload
+docker-compose up dev
 
-## Deploy on Vercel
+# Production build
+docker-compose up prod
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 🌐 Available URLs
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Local:** http://localhost:3000
+- **Homepage:** `/`
+- **Monitoring:** `/monitoring`
+- **API Health:** `/api/health`
+- **API Spirits:** `/api/spirits`
+
+## 🛠️ Technology Stack
+
+- **Next.js 16** with App Router & Turbopack
+- **React 19** with TypeScript
+- **Feature Sliced Design** architecture
+- **TanStack Query (React Query)** for state management
+- **SCSS Modules** for styling
+- **Zod** for validation (upcoming)
+- **Axios** for HTTP requests
+- **Docker** for containerization
+
+## 📁 Key Features Implemented
+
+### ✅ Phase 1: FSD Restructuring (Complete)
+- Full FSD architecture implementation
+- Entity layer with Spirit domain
+- Feature layer with Monitoring
+- Widgets layer with reusable components
+- Shared layer with utilities
+
+### 🔄 Phase 2: Zod Validation (In Progress)
+- Data validation schemas
+- Type-safe API requests
+
+### 📋 Phase 3: Real-time Features (Planned)
+- WebSocket/SSE for live updates
+- Interactive Tokyo map
+- Notification system
+
+## 🔧 Development
+
+### Code Style
+- Follow FSD import rules (lower layers can't import from higher layers)
+- Use SCSS Modules for styling
+- Write TypeScript with strict mode
+- Use React Query for server state
+
+### Adding New Features
+1. Add entity in `src/entities/` if needed
+2. Create feature in `src/features/`
+3. Build widgets in `src/widgets/`
+4. Add shared components in `src/shared/`
+
+## 📄 License
+
+MIT
