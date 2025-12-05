@@ -1,11 +1,10 @@
-# Dockerfile.dev
 FROM node:20-alpine
 
 WORKDIR /app
 
 # Install dependencies
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm install
 
 # Copy source code
 COPY . .
@@ -13,5 +12,5 @@ COPY . .
 # Expose ports
 EXPOSE 3000 9229
 
-# Start development server
+# Development command with debugging
 CMD ["npm", "run", "dev"]

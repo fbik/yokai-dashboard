@@ -4,7 +4,7 @@ WORKDIR /app
 
 # Устанавливаем зависимости
 COPY package.json package-lock.json ./
-RUN npm ci
+RUN npm ci --only=production
 
 # Копируем исходный код
 COPY . .
